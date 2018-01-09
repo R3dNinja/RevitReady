@@ -33,8 +33,7 @@ namespace com.Kirksey.RevitReady.Interface
         BrowserView webView;
 
         public DockPanel()
-        {
-            BrowserPreferences.SetUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1");
+        {        
             InitializeComponent();
             setupBrowser();
         }
@@ -46,15 +45,17 @@ namespace com.Kirksey.RevitReady.Interface
             LoggerProvider.Instance.OutputFile = "H:/DotNetBrowser.log";
 
             BrowserPreferences.SetUserAgent("Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1");
+            BrowserPreferences.SetChromiumSwitches("--lang=en");
             InitializeComponent();
             m_ExEvent = exEvent;
             m_Handler = handler;
             //setupBrowser();
 
-            webView = new WPFBrowserView();
-            mainLayout.Children.Add((UIElement)webView.GetComponent());
-            webView.Browser.UserAgent = "Mozilla / 5.0(iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit / 603.1.30(KHTML, like Gecko) Version / 10.0 Mobile / 14E304 Safari / 602.1";
-            webView.Browser.LoadURL("http://kirksey.helpdocsonline.com");
+            browserView.Browser.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1";
+            browserView.Browser.LoadURL("https://kirksey.helpdocsonline.com");
+            //mainLayout.Children.Add((UIElement)webView.GetComponent());
+            //webView.Browser.UserAgent = "Mozilla / 5.0(iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit / 603.1.30(KHTML, like Gecko) Version / 10.0 Mobile / 14E304 Safari / 602.1";
+            //webView.Browser.LoadURL("https://kirksey.helpdocsonline.com");
         }
 
         private void setupBrowser()
